@@ -21,9 +21,9 @@ from .views import UserRecordView
 # router.register(r'users', UserViewSet)
 # router.register(r'user-register', UserRecordView.as_view(),
 #                 basename="userrecord")
-router = routers.DefaultRouter()
-router.register('users', UserRecordView, basename="wanaotumia")
+# router = routers.DefaultRouter()
+# router.register('users', UserRecordView, basename="wanaotumia")
 
-urlpatterns = [
-    path('', include(router.urls))
-]
+# urlpatterns = [
+#     path('', include(router.urls))
+# ]

@@ -1,19 +1,36 @@
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from django.contrib.auth.models import User
-
-from .models import UserProfile
+from .models import User
 
 
-class ProfileInline(admin.StackedInline):
+@admin.register(User)
+class Admin(admin.ModelAdmin):
+    '''Admin View for '''
 
-    model = UserProfile
-    can_delete = False
+    list_display = ('email', 'id', 'user_name', 'phone_number',)
+    list_filter = (
+        'gender', 'date_created', 'active', 'followers', 'following',
+    )
 
-
-class UserAdmin(BaseUserAdmin):
-    inlines = [ProfileInline]
-
-
-admin.site.unregister(User)
-admin.site.register(User, UserAdmin)
+    readonly_fields = ('date_created',)
+    ordering = ('date_created',)
+    search_fields = ('id', 'email', 'user_name', 'phonenumber',)
+    fieldsets = (
+        (None, {
+            'fields': (
+                'id', 'email', 'user_name', 'created_at', 'active', 'phonenumber'
+            ),
+        }),
+        ('More Details', {
+            'classes': ('collapse',),
+            'fields': (
+                'phone_number', 'date_created', 'profile_image',
+                'gender', 'bio',
+            ),
+        }),
+        ('User Statistics', {
+            'classes': ('collapse',),
+            'fields': (
+                'followers', 'following',
+            ),
+        }),
+    )
