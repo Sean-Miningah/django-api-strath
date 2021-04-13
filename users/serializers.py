@@ -21,3 +21,11 @@ from rest_framework import serializers
 #         model = UserProfile
 #         fields = ["id", "phonenumber", "country",
 #                   "profile_pic", "user", ]
+from .models import User, UserFollowerTracker
+from rest_framework import serializers
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = '__all__'

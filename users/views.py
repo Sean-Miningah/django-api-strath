@@ -28,3 +28,11 @@
 #         serializer = UserProfileSerializer(new_userprofile)
 
 #         return Response(serializer)
+from rest_framework import viewsets
+from .serializers import UserSerializer
+from .models import User
+
+
+class UserRecordView(viewsets.ModelViewSet):
+    queryset = User.objects.all().order_by('-date_created')
+    serializer_class = UserSerializer
