@@ -40,7 +40,7 @@ class User(models.Model):
 
     def __str__(self):
         """Unicode representation of User."""
-        pass
+        return str(self.id)
 
 
 class UserFollowerTracker(models.Model):

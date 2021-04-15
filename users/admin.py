@@ -12,12 +12,11 @@ class Admin(admin.ModelAdmin):
     )
 
     readonly_fields = ('date_created',)
-    ordering = ('date_created',)
-    search_fields = ('id', 'email', 'user_name', 'phonenumber',)
+    search_fields = ('id', 'email', 'user_name', 'phone_number',)
     fieldsets = (
         (None, {
             'fields': (
-                'id', 'email', 'user_name', 'created_at', 'active', 'phonenumber'
+                'id', 'email', 'user_name', 'active',
             ),
         }),
         ('More Details', {
@@ -33,4 +32,8 @@ class Admin(admin.ModelAdmin):
                 'followers', 'following',
             ),
         }),
+    )
+    readonly_fields = (
+        'id', 'followers', 'following', 'date_created', 'profile_image',
+        'email', 'user_name'
     )
