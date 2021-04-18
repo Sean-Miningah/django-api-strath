@@ -29,10 +29,12 @@
 
 #         return Response(serializer)
 from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
 from .serializers import UserSerializer
 from .models import User
 
 
 class UserRecordView(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = User.objects.all().order_by('-date_created')
     serializer_class = UserSerializer

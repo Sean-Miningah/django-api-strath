@@ -33,9 +33,9 @@ from rest_framework import routers
 from .views import UserRecordView
 
 router = routers.DefaultRouter()
-router.register(r'users', UserRecordView)
+router.register('users', UserRecordView)
+
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
