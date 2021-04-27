@@ -20,6 +20,7 @@ from rest_framework.authtoken import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('users.urls')),
+    path('chirps', include('Chirps.urls')),
     path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
     path('api-token-auth/', views.obtain_auth_token, name='api-token-auth'),
     # path('store/', include('store.urls')),
